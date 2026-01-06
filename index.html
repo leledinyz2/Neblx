@@ -13,11 +13,14 @@
     overflow: hidden;
   }
 
-  .scene {
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
+.scene {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.6s ease;
+}
 
   .dialogue-box {
     position: absolute;
@@ -84,6 +87,7 @@
 const scenes = {
  start: {
   name: "",
+  bg: "entrada.png",
   text: "Neblx's Journey\n\nUma história que começa devagar.",
   choices: [
     { text: "Iniciar", next: "intro" },
@@ -102,6 +106,7 @@ const scenes = {
 
   corridor: {
     name: "Narrador",
+    bg: "corredor.png",
     text: "Os corredores da Walfred Lunes estão cheios como sempre.\n\nEntre vozes conhecidas, alguém chama seu nome.",
     choices: [
       { text: "Olhar para trás", next: "leleny1" }
@@ -110,6 +115,7 @@ const scenes = {
 
   leleny1: {
     name: "Leleny",
+    bg: "corredor.png",
     text: "John! Ei!",
     choices: [
       { text: "Responder", next: "john1" }
@@ -118,6 +124,7 @@ const scenes = {
 
   john1: {
     name: "John",
+    bg: "corredor.png",
     text: "Oi, Leleny.",
     choices: [
       { text: "Continuar", next: "leleny2" }
@@ -126,6 +133,7 @@ const scenes = {
 
   leleny2: {
     name: "Leleny",
+    bg: "corredor.png",
     text: "Como você tá hoje?",
     choices: [
       { text: "Responder", next: "john2" }
@@ -134,6 +142,7 @@ const scenes = {
 
   john2: {
     name: "John",
+    bg: "corredor.png",
     text: "Tô bem. E você?",
     choices: [
       { text: "Continuar", next: "leleny3" }
@@ -142,6 +151,7 @@ const scenes = {
 
   leleny3: {
     name: "Leleny",
+    bg: "corredor.png",
     text: "Mais ou menos… mas sobrevivendo.\n\nAliás, você já escolheu algum clube da escola?",
     choices: [
       { text: "Pensar", next: "john3" }
@@ -150,6 +160,7 @@ const scenes = {
 
   john3: {
     name: "John",
+    bg: "corredor.png",
     text: "Clube…?\n\nEspera.\n\nEu esqueci completamente de escolher.",
     choices: [
       { text: "Continuar", next: "leleny4" }
@@ -158,6 +169,7 @@ const scenes = {
 
   leleny4: {
     name: "Leleny",
+    bg: "corredor.png",
     text: "Ei, relaxa. Acontece.\n\nAinda dá tempo.",
     choices: [
       { text: "Ouvir", next: "leleny5" }
@@ -166,6 +178,7 @@ const scenes = {
 
   leleny5: {
     name: "Leleny",
+    bg: "corredor.png",
     text: "Tem astronomia, programação…\n\nOu você pode entrar no Neblx.",
     choices: [
       { text: "Neblx?", next: "john4" }
@@ -174,6 +187,7 @@ const scenes = {
 
   john4: {
     name: "John",
+    bg: "corredor.png",
     text: "Neblx?",
     choices: [
       { text: "Continuar", next: "leleny6" }
@@ -182,6 +196,7 @@ const scenes = {
 
   leleny6: {
     name: "Leleny",
+    bg: "corredor.png",
     text: "É o clube que eu criei.\n\nAinda é temporário, mas… especial.",
     choices: [
       { text: "Ouvir mais", next: "leleny7" }
@@ -190,6 +205,7 @@ const scenes = {
 
   leleny7: {
     name: "Leleny",
+    bg: "corredor.png",
     text: "Se quiser aparecer, hoje às 12:40.\nNa biblioteca da escola.",
     choices: [
       { text: "Perguntar", next: "john5" }
@@ -198,6 +214,7 @@ const scenes = {
 
   john5: {
     name: "John",
+    bg: "corredor.png",
     text: "Quem participa?",
     choices: [
       { text: "Continuar", next: "leleny8" }
@@ -206,6 +223,7 @@ const scenes = {
 
   leleny8: {
     name: "Leleny",
+    bg: "corredor.png",
     text: "Eu, o Nicky, o Henry e a Emilly.\n\nCada um do seu jeito.",
     choices: [
       { text: "Aceitar", next: "john6" }
@@ -214,6 +232,7 @@ const scenes = {
 
   john6: {
     name: "John",
+    bg: "corredor.png",
     text: "Tá bom.\nEu vou.",
     choices: [
       { text: "Continuar", next: "leleny9" }
@@ -222,6 +241,7 @@ const scenes = {
 
   leleny9: {
     name: "Leleny",
+    bg: "corredor.png",
     text: "Sério?\nQue bom.\n\nEntão a gente se vê no Neblx.",
     choices: [
       { text: "Seguir", next: "endTemp" }
@@ -230,6 +250,7 @@ const scenes = {
 
 endTemp: {
   name: "Narrador",
+  bg: "corredor.png",
   text:
     "12:40.\nBiblioteca da Walfred Lunes.\n\n" +
     "O clube Neblx te espera.\n\n" +
