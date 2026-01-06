@@ -70,12 +70,25 @@
     background: #ff4f89;
     transform: scale(1.05);
   }
+
+  .character {
+  position: absolute;
+  bottom: 140px; /* sobe o quadrado acima da caixa de texto */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 380px;
+  background: url('cinza.png') center/cover no-repeat;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
 </style>
 </head>
 
 <body>
 
 <div class="scene">
+  <div class="character" id="character"></div>
   <div class="dialogue-box">
     <div class="name" id="name"></div>
     <div class="text" id="text"></div>
@@ -117,6 +130,7 @@ intro: {
   leleny1: {
     name: "Leleny",
     bg: "corredor.png",
+    char: true,
     text: "John! Ei!",
     choices: [
       { text: "Responder", next: "john1" }
@@ -135,6 +149,7 @@ intro: {
   leleny2: {
     name: "Leleny",
     bg: "corredor.png",
+    char: true,
     text: "Como você tá hoje?",
     choices: [
       { text: "Responder", next: "john2" }
@@ -153,6 +168,7 @@ intro: {
   leleny3: {
     name: "Leleny",
     bg: "corredor.png",
+    char: true,
     text: "Mais ou menos… mas sobrevivendo.\n\nAliás, você já escolheu algum clube da escola?",
     choices: [
       { text: "Pensar", next: "john3" }
@@ -171,6 +187,7 @@ intro: {
   leleny4: {
     name: "Leleny",
     bg: "corredor.png",
+    char: true,
     text: "Ei, relaxa. Acontece.\n\nAinda dá tempo.",
     choices: [
       { text: "Ouvir", next: "leleny5" }
@@ -180,6 +197,7 @@ intro: {
   leleny5: {
     name: "Leleny",
     bg: "corredor.png",
+    char: true,
     text: "Tem astronomia, programação…\n\nOu você pode entrar no Neblx.",
     choices: [
       { text: "Neblx?", next: "john4" }
@@ -198,6 +216,7 @@ intro: {
   leleny6: {
     name: "Leleny",
     bg: "corredor.png",
+    char: true,
     text: "É o clube que eu criei.\n\nAinda é temporário, mas… especial.",
     choices: [
       { text: "Ouvir mais", next: "leleny7" }
@@ -207,6 +226,7 @@ intro: {
   leleny7: {
     name: "Leleny",
     bg: "corredor.png",
+    char: true,
     text: "Se quiser aparecer, hoje às 12:40.\nNa biblioteca da escola.",
     choices: [
       { text: "Perguntar", next: "john5" }
@@ -225,6 +245,7 @@ intro: {
   leleny8: {
     name: "Leleny",
     bg: "corredor.png",
+    char: true,
     text: "Eu, o Nicky, o Henry e a Emilly.\n\nCada um do seu jeito.",
     choices: [
       { text: "Aceitar", next: "john6" }
@@ -243,6 +264,7 @@ intro: {
   leleny9: {
     name: "Leleny",
     bg: "corredor.png",
+    char: true,
     text: "Sério?\nQue bom.\n\nEntão a gente se vê no Neblx.",
     choices: [
       { text: "Seguir", next: "endTemp" }
@@ -282,6 +304,7 @@ const textBox = document.getElementById("text");
 const choicesBox = document.getElementById("choices");
 
 const sceneDiv = document.querySelector(".scene");
+const character = document.getElementById("character");
 
 function loadScene(key) {
   const scene = scenes[key];
@@ -293,6 +316,11 @@ function loadScene(key) {
   if (scene.bg) {
     sceneDiv.style.backgroundImage = `url('${scene.bg}')`;
   }
+  if (scene.char) {
+  character.style.opacity = "1";
+} else {
+  character.style.opacity = "0";
+}
 
   scene.choices.forEach(choice => {
     const btn = document.createElement("button");
