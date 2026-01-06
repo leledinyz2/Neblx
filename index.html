@@ -82,14 +82,14 @@
 
 <script>
 const scenes = {
-start: {
+ start: {
   name: "",
   text: "Neblx's Journey\n\nUma história que começa devagar.",
   choices: [
     { text: "Iniciar", next: "intro" },
     { text: "Créditos", next: "credits" }
   ]
-}
+ }
 
   intro: {
     name: "Narrador",
@@ -237,7 +237,7 @@ endTemp: {
     { text: "Ver créditos", next: "credits" },
     { text: "Voltar ao início", next: "start" }
   ]
-}
+},
 
   credits: {
   name: "Créditos",
@@ -251,7 +251,7 @@ endTemp: {
   choices: [
     { text: "Voltar ao início", next: "start" }
   ]
-}
+ }
 };
 
 const nameBox = document.getElementById("name");
