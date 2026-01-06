@@ -82,13 +82,14 @@
 
 <script>
 const scenes = {
-  start: {
-    name: "",
-    text: "Neblx's Journey\n\nClique para começar.",
-    choices: [
-      { text: "Iniciar", next: "intro" }
-    ]
-  },
+start: {
+  name: "",
+  text: "Neblx's Journey\n\nUma história que começa devagar.",
+  choices: [
+    { text: "Iniciar", next: "intro" },
+    { text: "Créditos", next: "credits" }
+  ]
+}
 
   intro: {
     name: "Narrador",
@@ -226,13 +227,31 @@ const scenes = {
     ]
   },
 
-  endTemp: {
-    name: "Narrador",
-    text: "12:40.\nBiblioteca da Walfred Lunes.\n\nO clube Neblx te espera.\n\nE talvez isso seja só o começo.",
-    choices: [
-      { text: "Continuar depois", next: "start" }
-    ]
-  }
+endTemp: {
+  name: "Narrador",
+  text:
+    "12:40.\nBiblioteca da Walfred Lunes.\n\n" +
+    "O clube Neblx te espera.\n\n" +
+    "Continua…",
+  choices: [
+    { text: "Ver créditos", next: "credits" },
+    { text: "Voltar ao início", next: "start" }
+  ]
+}
+
+  credits: {
+  name: "Créditos",
+  text:
+    "Neblx's Journey\n\n" +
+    "História e criação:\nLele\n\n" +
+    "Personagens originais:\nLeleny, Nicky, Henry, Emilly\n\n" +
+    "Protagonista:\nJohn Sand\n\n" +
+    "Projeto criado como Visual Novel web.\n\n" +
+    "Obrigado por jogar 💫",
+  choices: [
+    { text: "Voltar ao início", next: "start" }
+  ]
+}
 };
 
 const nameBox = document.getElementById("name");
