@@ -1,187 +1,175 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Neblx's Journey</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(120deg, #0b0f1a, #1a1f3c);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+<meta charset="UTF-8">
+<title>Neblx's Journey</title>
 
-    .game {
-      width: 90%;
-      max-width: 600px;
-      background: rgba(0,0,0,0.5);
-      padding: 24px;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(140,120,255,0.3);
-      animation: fade 0.5s ease;
-    }
-
-    h1 {
-      text-align: center;
-      color: #bdaaff;
-    }
-
-    p {
-      line-height: 1.6;
-      font-size: 1.05em;
-    }
-
-    .choices {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    button {
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      background: #6a5acd;
-      color: white;
-      font-size: 1em;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      background: #8575ff;
-      transform: scale(1.02);
-    }
-
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-
-<div class="game" id="game"></div>
-
-<script>
-  const scenes = {
-    start: {
-      title: "Neblx's Journey",
-      text: "Uma cidade onde emoções moldam o destino.",
-      choices: [
-        { text: "Iniciar", next: "intro" },
-        { text: "Créditos", next: "credits" }
-      ]
-    },
-
-    intro: {
-      title: "Introdução",
-      text: "Neblx brilha em neon e silêncio. Algo hoje parece… diferente.",
-      choices: [
-        { text: "Continuar", next: "chooseChar" }
-      ]
-    },
-
-    chooseChar: {
-      title: "Escolha seu personagem",
-      text: "Quem você será nessa jornada?",
-      choices: [
-        { text: "Aerin — observador", next: "aerin" },
-        { text: "Nyx — impulsivo", next: "nyx" },
-        { text: "Lumo — sensível", next: "lumo" }
-      ]
-    },
-
-    aerin: {
-      title: "Aerin",
-      text: "Você prefere observar antes de agir… mas Neblx pode exigir coragem.",
-      choices: [{ text: "Continuar", next: "decision1" }]
-    },
-
-    nyx: {
-      title: "Nyx",
-      text: "Correr em direção ao estranho sempre foi seu instinto.",
-      choices: [{ text: "Continuar", next: "decision1" }]
-    },
-
-    lumo: {
-      title: "Lumo",
-      text: "Para você, emoções têm cores. Hoje, tudo está mais escuro.",
-      choices: [{ text: "Continuar", next: "decision1" }]
-    },
-
-    decision1: {
-      title: "Corredor",
-      text: "Um colega encara um holograma instável no corredor.",
-      choices: [
-        { text: "Conversar", next: "talk" },
-        { text: "Ignorar", next: "ignore" }
-      ]
-    },
-
-    talk: {
-      title: "Contato",
-      text: "O holograma reage à sua presença.",
-      choices: [
-        { text: "Ajudar", next: "goodEnd" },
-        { text: "Se afastar", next: "neutralEnd" }
-      ]
-    },
-
-    ignore: {
-      title: "Silêncio",
-      text: "Algo dá errado atrás de você. O ar pesa.",
-      choices: [
-        { text: "Continuar", next: "badEnd" }
-      ]
-    },
-
-    goodEnd: {
-      title: "Final Feliz",
-      text: "Neblx se estabiliza. Você fez a diferença.",
-      choices: [{ text: "Recomeçar", next: "start" }]
-    },
-
-    neutralEnd: {
-      title: "Final Neutro",
-      text: "Nada pior aconteceu… mas algo ficou pendente.",
-      choices: [{ text: "Recomeçar", next: "start" }]
-    },
-
-    badEnd: {
-      title: "Final Trágico",
-      text: "Algumas escolhas ecoam pela cidade inteira.",
-      choices: [{ text: "Recomeçar", next: "start" }]
-    },
-
-    credits: {
-      title: "Créditos",
-      text: "História e OCs por Lele • Visual Novel Web",
-      choices: [{ text: "Voltar", next: "start" }]
-    }
-  };
-
-  const gameDiv = document.getElementById("game");
-
-  function loadScene(sceneKey) {
-    const scene = scenes[sceneKey];
-    gameDiv.innerHTML = `
-      <h1>${scene.title}</h1>
-      <p>${scene.text}</p>
-      <div class="choices">
-        ${scene.choices.map(c =>
-          `<button onclick="loadScene('${c.next}')">${c.text}</button>`
-        ).join("")}
-      </div>
-    `;
+<style>
+  body {
+    margin: 0;
+    background: linear-gradient(180deg, #1a1a2e, #0f0f1a);
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    color: #fff;
   }
 
-  loadScene("start");
+  .scene {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  /* Caixa de diálogo estilo VN */
+  .dialogue-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgba(255, 192, 203, 0.9);
+    box-sizing: border-box;
+    border-top: 4px solid #ff9bb5;
+  }
+
+  .name {
+    position: absolute;
+    top: -28px;
+    left: 20px;
+    background: #ff9bb5;
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-weight: bold;
+    color: #2b2b2b;
+  }
+
+  .text {
+    font-size: 1.05em;
+    color: #2b2b2b;
+    min-height: 60px;
+  }
+
+  .choices {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  button {
+    background: #ff6f9c;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    background: #ff4f89;
+    transform: scale(1.05);
+  }
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+  <div class="dialogue-box">
+    <div class="name" id="name"></div>
+    <div class="text" id="text"></div>
+    <div class="choices" id="choices"></div>
+  </div>
+</div>
+
+<script>
+const scenes = {
+  start: {
+    name: "",
+    text: "Neblx's Journey\n\nClique para começar.",
+    choices: [
+      { text: "Iniciar", next: "intro" }
+    ]
+  },
+
+  intro: {
+    name: "Narrador",
+    text: "A cidade de Neblx nunca dorme. Luzes de neon, silêncio artificial… e você no meio disso tudo.\n\nSeu nome é John Sand.",
+    choices: [
+      { text: "Continuar", next: "school" }
+    ]
+  },
+
+  school: {
+    name: "Narrador",
+    text: "No corredor da escola tecnológica, John sente algo estranho no ar.",
+    choices: [
+      { text: "Seguir em frente", next: "meet" }
+    ]
+  },
+
+  meet: {
+    name: "OC Misterioso",
+    text: "Ei, John… você também sentiu isso?",
+    choices: [
+      { text: "Responder", next: "talk" },
+      { text: "Ignorar", next: "ignore" }
+    ]
+  },
+
+  talk: {
+    name: "John",
+    text: "Sentir o quê…?",
+    choices: [
+      { text: "Ouvir com atenção", next: "goodEnd" }
+    ]
+  },
+
+  ignore: {
+    name: "Narrador",
+    text: "John passa direto. Atrás dele, algo falha em Neblx.",
+    choices: [
+      { text: "Continuar", next: "badEnd" }
+    ]
+  },
+
+  goodEnd: {
+    name: "Narrador",
+    text: "Essa conversa muda mais do que John imagina.\n\nNeblx reage.",
+    choices: [
+      { text: "Recomeçar", next: "start" }
+    ]
+  },
+
+  badEnd: {
+    name: "Narrador",
+    text: "Algumas oportunidades não voltam.\n\nNeblx registra o erro.",
+    choices: [
+      { text: "Recomeçar", next: "start" }
+    ]
+  }
+};
+
+const nameBox = document.getElementById("name");
+const textBox = document.getElementById("text");
+const choicesBox = document.getElementById("choices");
+
+function loadScene(key) {
+  const scene = scenes[key];
+  nameBox.textContent = scene.name;
+  textBox.textContent = scene.text;
+  choicesBox.innerHTML = "";
+
+  scene.choices.forEach(choice => {
+    const btn = document.createElement("button");
+    btn.textContent = choice.text;
+    btn.onclick = () => loadScene(choice.next);
+    choicesBox.appendChild(btn);
+  });
+}
+
+loadScene("start");
 </script>
 
 </body>
