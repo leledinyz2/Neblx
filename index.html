@@ -280,22 +280,34 @@ const nameBox = document.getElementById("name");
 const textBox = document.getElementById("text");
 const choicesBox = document.getElementById("choices");
 
+const sceneDiv = document.querySelector(".scene");
+
 function loadScene(key) {
   const scene = scenes[key];
+
   nameBox.textContent = scene.name;
   textBox.textContent = scene.text;
   choicesBox.innerHTML = "";
 
+  if (scene.bg) {
+    sceneDiv.style.backgroundImage = `url('${scene.bg}')`;
+  }
+
   scene.choices.forEach(choice => {
     const btn = document.createElement("button");
     btn.textContent = choice.text;
+
     btn.onclick = () => {
-  if (choice.link) {
-    window.location.href = choice.link;
-  } else {
-    loadScene(choice.next);
-  }
-};
+      if (choice.link) {
+        window.location.href = choice.link;
+      } else {
+        loadScene(choice.next);
+      }
+    };
+
+    choicesBox.appendChild(btn);
+  });
+}
 
     choicesBox.appendChild(btn);
   });
