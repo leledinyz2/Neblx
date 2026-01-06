@@ -92,7 +92,7 @@ const scenes = {
 
   intro: {
     name: "Narrador",
-    text: "Neblx acorda em tons frios.\n\nVocê segue seu caminho de sempre até a escola Walfred Lunes.",
+    text: "Mais um dia comum começa.\n\nVocê segue sua rotina até a escola Walfred Lunes.",
     choices: [
       { text: "Continuar", next: "corridor" }
     ]
@@ -100,7 +100,7 @@ const scenes = {
 
   corridor: {
     name: "Narrador",
-    text: "Os corredores da Walfred Lunes estão cheios como todo dia.\n\nEntre vozes conhecidas, alguém chama seu nome.",
+    text: "Os corredores da Walfred Lunes estão cheios como sempre.\n\nEntre vozes conhecidas, alguém chama seu nome.",
     choices: [
       { text: "Olhar para trás", next: "leleny1" }
     ]
@@ -140,7 +140,7 @@ const scenes = {
 
   leleny3: {
     name: "Leleny",
-    text: "Mais ou menos… mas sobrevivendo.\n\nAh— você já escolheu algum clube da escola?",
+    text: "Mais ou menos… mas sobrevivendo.\n\nAliás, você já escolheu algum clube da escola?",
     choices: [
       { text: "Pensar", next: "john3" }
     ]
@@ -156,7 +156,7 @@ const scenes = {
 
   leleny4: {
     name: "Leleny",
-    text: "Ei, calma. Acontece.\n\nAinda dá tempo.",
+    text: "Ei, relaxa. Acontece.\n\nAinda dá tempo.",
     choices: [
       { text: "Ouvir", next: "leleny5" }
     ]
@@ -164,15 +164,15 @@ const scenes = {
 
   leleny5: {
     name: "Leleny",
-    text: "Tem o clube de astronomia, o de programação…\n\nOu você pode entrar no meu.",
+    text: "Tem astronomia, programação…\n\nOu você pode entrar no Neblx.",
     choices: [
-      { text: "Seu clube?", next: "john4" }
+      { text: "Neblx?", next: "john4" }
     ]
   },
 
   john4: {
     name: "John",
-    text: "Seu clube?",
+    text: "Neblx?",
     choices: [
       { text: "Continuar", next: "leleny6" }
     ]
@@ -180,7 +180,7 @@ const scenes = {
 
   leleny6: {
     name: "Leleny",
-    text: "É um clube temporário.\nMeio experimental.",
+    text: "É o clube que eu criei.\n\nAinda é temporário, mas… especial.",
     choices: [
       { text: "Ouvir mais", next: "leleny7" }
     ]
@@ -188,7 +188,7 @@ const scenes = {
 
   leleny7: {
     name: "Leleny",
-    text: "Se quiser, aparece hoje.\n12:40, na biblioteca da escola.",
+    text: "Se quiser aparecer, hoje às 12:40.\nNa biblioteca da escola.",
     choices: [
       { text: "Perguntar", next: "john5" }
     ]
@@ -196,7 +196,7 @@ const scenes = {
 
   john5: {
     name: "John",
-    text: "Quem faz parte?",
+    text: "Quem participa?",
     choices: [
       { text: "Continuar", next: "leleny8" }
     ]
@@ -204,7 +204,7 @@ const scenes = {
 
   leleny8: {
     name: "Leleny",
-    text: "Eu, o Nicky, o Henry e a Emilly.\n\nTodo mundo é meio diferente… mas funciona.",
+    text: "Eu, o Nicky, o Henry e a Emilly.\n\nCada um do seu jeito.",
     choices: [
       { text: "Aceitar", next: "john6" }
     ]
@@ -220,7 +220,7 @@ const scenes = {
 
   leleny9: {
     name: "Leleny",
-    text: "Sério?\nQue bom!\n\nEntão a gente se vê na biblioteca.",
+    text: "Sério?\nQue bom.\n\nEntão a gente se vê no Neblx.",
     choices: [
       { text: "Seguir", next: "endTemp" }
     ]
@@ -228,7 +228,7 @@ const scenes = {
 
   endTemp: {
     name: "Narrador",
-    text: "12:40.\nBiblioteca da Walfred Lunes.\n\nQuatro nomes.\nUma escolha simples.\n\nOu talvez não.",
+    text: "12:40.\nBiblioteca da Walfred Lunes.\n\nO clube Neblx te espera.\n\nE talvez isso seja só o começo.",
     choices: [
       { text: "Continuar depois", next: "start" }
     ]
