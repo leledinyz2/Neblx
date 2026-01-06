@@ -268,7 +268,14 @@ function loadScene(key) {
   scene.choices.forEach(choice => {
     const btn = document.createElement("button");
     btn.textContent = choice.text;
-    btn.onclick = () => loadScene(choice.next);
+    btn.onclick = () => {
+  if (choice.link) {
+    window.location.href = choice.link;
+  } else {
+    loadScene(choice.next);
+  }
+};
+
     choicesBox.appendChild(btn);
   });
 }
