@@ -7,11 +7,10 @@
 <style>
   body {
     margin: 0;
-    background: linear-gradient(180deg, #1a1a2e, #0f0f1a);
-    font-family: 'Arial', sans-serif;
+    background: linear-gradient(180deg, #0f1020, #1b1d3a);
+    font-family: Arial, sans-serif;
     height: 100vh;
     overflow: hidden;
-    color: #fff;
   }
 
   .scene {
@@ -20,50 +19,48 @@
     position: relative;
   }
 
-  /* Caixa de diálogo estilo VN */
   .dialogue-box {
     position: absolute;
     bottom: 0;
     width: 100%;
     padding: 20px;
-    background: rgba(255, 192, 203, 0.9);
-    box-sizing: border-box;
+    background: rgba(255, 200, 215, 0.92);
     border-top: 4px solid #ff9bb5;
+    box-sizing: border-box;
   }
 
   .name {
     position: absolute;
-    top: -28px;
+    top: -30px;
     left: 20px;
     background: #ff9bb5;
     padding: 6px 14px;
-    border-radius: 12px;
+    border-radius: 14px;
     font-weight: bold;
     color: #2b2b2b;
   }
 
   .text {
-    font-size: 1.05em;
     color: #2b2b2b;
-    min-height: 60px;
+    font-size: 1.05em;
+    min-height: 70px;
+    white-space: pre-line;
   }
 
   .choices {
     margin-top: 12px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
   }
 
   button {
     background: #ff6f9c;
     border: none;
-    border-radius: 20px;
+    border-radius: 18px;
     padding: 8px 16px;
     color: white;
-    cursor: pointer;
     font-size: 0.95em;
+    cursor: pointer;
     transition: 0.2s;
+    margin-right: 8px;
   }
 
   button:hover {
@@ -95,58 +92,145 @@ const scenes = {
 
   intro: {
     name: "Narrador",
-    text: "A cidade de Neblx nunca dorme. Luzes de neon, silêncio artificial… e você no meio disso tudo.\n\nSeu nome é John Sand.",
+    text: "Neblx acorda em tons frios.\n\nVocê segue seu caminho de sempre até a escola Walfred Lunes.",
     choices: [
-      { text: "Continuar", next: "school" }
+      { text: "Continuar", next: "corridor" }
     ]
   },
 
-  school: {
+  corridor: {
     name: "Narrador",
-    text: "No corredor da escola tecnológica, John sente algo estranho no ar.",
+    text: "Os corredores da Walfred Lunes estão cheios como todo dia.\n\nEntre vozes conhecidas, alguém chama seu nome.",
     choices: [
-      { text: "Seguir em frente", next: "meet" }
+      { text: "Olhar para trás", next: "leleny1" }
     ]
   },
 
-  meet: {
-    name: "OC Misterioso",
-    text: "Ei, John… você também sentiu isso?",
+  leleny1: {
+    name: "Leleny",
+    text: "John! Ei!",
     choices: [
-      { text: "Responder", next: "talk" },
-      { text: "Ignorar", next: "ignore" }
+      { text: "Responder", next: "john1" }
     ]
   },
 
-  talk: {
+  john1: {
     name: "John",
-    text: "Sentir o quê…?",
+    text: "Oi, Leleny.",
     choices: [
-      { text: "Ouvir com atenção", next: "goodEnd" }
+      { text: "Continuar", next: "leleny2" }
     ]
   },
 
-  ignore: {
-    name: "Narrador",
-    text: "John passa direto. Atrás dele, algo falha em Neblx.",
+  leleny2: {
+    name: "Leleny",
+    text: "Como você tá hoje?",
     choices: [
-      { text: "Continuar", next: "badEnd" }
+      { text: "Responder", next: "john2" }
     ]
   },
 
-  goodEnd: {
-    name: "Narrador",
-    text: "Essa conversa muda mais do que John imagina.\n\nNeblx reage.",
+  john2: {
+    name: "John",
+    text: "Tô bem. E você?",
     choices: [
-      { text: "Recomeçar", next: "start" }
+      { text: "Continuar", next: "leleny3" }
     ]
   },
 
-  badEnd: {
-    name: "Narrador",
-    text: "Algumas oportunidades não voltam.\n\nNeblx registra o erro.",
+  leleny3: {
+    name: "Leleny",
+    text: "Mais ou menos… mas sobrevivendo.\n\nAh— você já escolheu algum clube da escola?",
     choices: [
-      { text: "Recomeçar", next: "start" }
+      { text: "Pensar", next: "john3" }
+    ]
+  },
+
+  john3: {
+    name: "John",
+    text: "Clube…?\n\nEspera.\n\nEu esqueci completamente de escolher.",
+    choices: [
+      { text: "Continuar", next: "leleny4" }
+    ]
+  },
+
+  leleny4: {
+    name: "Leleny",
+    text: "Ei, calma. Acontece.\n\nAinda dá tempo.",
+    choices: [
+      { text: "Ouvir", next: "leleny5" }
+    ]
+  },
+
+  leleny5: {
+    name: "Leleny",
+    text: "Tem o clube de astronomia, o de programação…\n\nOu você pode entrar no meu.",
+    choices: [
+      { text: "Seu clube?", next: "john4" }
+    ]
+  },
+
+  john4: {
+    name: "John",
+    text: "Seu clube?",
+    choices: [
+      { text: "Continuar", next: "leleny6" }
+    ]
+  },
+
+  leleny6: {
+    name: "Leleny",
+    text: "É um clube temporário.\nMeio experimental.",
+    choices: [
+      { text: "Ouvir mais", next: "leleny7" }
+    ]
+  },
+
+  leleny7: {
+    name: "Leleny",
+    text: "Se quiser, aparece hoje.\n12:40, na biblioteca da escola.",
+    choices: [
+      { text: "Perguntar", next: "john5" }
+    ]
+  },
+
+  john5: {
+    name: "John",
+    text: "Quem faz parte?",
+    choices: [
+      { text: "Continuar", next: "leleny8" }
+    ]
+  },
+
+  leleny8: {
+    name: "Leleny",
+    text: "Eu, o Nicky, o Henry e a Emilly.\n\nTodo mundo é meio diferente… mas funciona.",
+    choices: [
+      { text: "Aceitar", next: "john6" }
+    ]
+  },
+
+  john6: {
+    name: "John",
+    text: "Tá bom.\nEu vou.",
+    choices: [
+      { text: "Continuar", next: "leleny9" }
+    ]
+  },
+
+  leleny9: {
+    name: "Leleny",
+    text: "Sério?\nQue bom!\n\nEntão a gente se vê na biblioteca.",
+    choices: [
+      { text: "Seguir", next: "endTemp" }
+    ]
+  },
+
+  endTemp: {
+    name: "Narrador",
+    text: "12:40.\nBiblioteca da Walfred Lunes.\n\nQuatro nomes.\nUma escolha simples.\n\nOu talvez não.",
+    choices: [
+      { text: "Continuar depois", next: "start" }
     ]
   }
 };
